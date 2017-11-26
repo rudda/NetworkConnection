@@ -1,4 +1,4 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnection/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnetion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnection/badge.svg)(https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnetion)
 # NetworkConnection Setup
 
 # Gradle
