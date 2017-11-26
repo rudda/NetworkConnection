@@ -1,5 +1,6 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnection/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apache.commons/commons-lang3/)
 
-# NetworkConnection   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnection/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnection) 
+# NetworkConnection [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnection/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.rudda/networkconnetion) 
 
 # Gradle
 ```gradle
