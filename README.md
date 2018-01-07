@@ -101,6 +101,13 @@ public class MainActivity extends AppCompatActivity implements  StringListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        CustomRequest customRequest = new CustomRequest();
+        customRequest.setBaseUrl("http://localhost/users"); //base url
+        customRequest.setRouter("/"); //router to REST API
+        customRequest.setMethod(Request.Method.GET);// methods ( get or post )
+        customRequest.setResult(0); //optional
+
+        NetworkConnection.getInstance(this).execute(this, customRequest);
 
 
     }
@@ -135,6 +142,14 @@ public class MainActivity extends AppCompatActivity implements  JSONObjectListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        CustomRequest customRequest = new CustomRequest();
+        customRequest.setBaseUrl("http://localhost/users"); //base url
+        customRequest.setRouter("/"); //router to REST API
+        customRequest.setMethod(Request.Method.GET);// methods ( get or post )
+        customRequest.setResult(0); //optional
+
+        NetworkConnection.getInstance(this).execute(this, customRequest);
 
 
     }
@@ -158,7 +173,39 @@ public class MainActivity extends AppCompatActivity implements  JSONObjectListen
 
 ```
 
+# Simple Post Request
 
+```java
+
+  CustomRequest customRequest = new CustomRequest();
+        customRequest.setBaseUrl("http://localhost/users"); //base url
+        customRequest.setRouter("/"); //router to REST API
+        customRequest.setMethod(Request.Method.POST);// methods ( get or post )
+        customRequest.setResult(0); //optional
+
+        NetworkConnection.getInstance(this).execute(this, customRequest);
+```
+
+
+# add params to Post Request
+
+```java
+  
+  CustomRequest customRequest = new CustomRequest();
+        customRequest.setBaseUrl("http://localhost/users"); //base url
+        customRequest.setRouter("/"); //router to REST API
+        customRequest.setMethod(Request.Method.POST);// methods ( get or post )
+        customRequest.setResult(0); //optional
+
+         HashMap<String, String> params= new HashMap<>();
+                params.put("param_1", "value_1");
+                params.put("param_2", "value_2");
+                params.put("param_3", "value_3");
+        
+          customRequest.setParams(params); //only POST
+        
+        NetworkConnection.getInstance(this).execute(this, customRequest);
+```
 
 
 
