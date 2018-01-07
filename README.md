@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements JsonArrayListener
 
 ```
 
-<h4>2º step:</h4>  you must to instance customRequest class and set attribuits base url ( **setBaseUrl** ) , router ( **setRouter** ) and the method to request ( **GET or POST** ) this example GET.
+<h4>2º step:</h4>  you must to instance customRequest class and set attribuites base url ( **setBaseUrl** ) , router ( **setRouter** ) and the method to request ( **GET or POST** ) this example GET.
 
 ```java
 
