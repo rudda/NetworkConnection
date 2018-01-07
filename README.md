@@ -86,6 +86,79 @@ you must instantiate a hashmap of type <string, string> add key and respective v
 ```
  
 
+# working with JsonObject or String
+
+how to work JsonObject or String? Easy :) ... do you must to implement JSONObjectListener and/or StringListener interface 
+as shown below.
+
+
+```java
+
+public class MainActivity extends AppCompatActivity implements  StringListener{
+
+  
+     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+    }
+
+    public void fail(String message, int requestCode) {
+
+       
+    }
+
+    @Override
+    public void loading(boolean loading, int requestCode) {
+      
+    }
+
+    @Override
+    public void sucess(String string, int requestCode) {
+
+    }
+
+}
+
+```
+
+<h1> OR </h1>
+
+```java
+
+public class MainActivity extends AppCompatActivity implements  JSONObjectListener{
+
+  
+     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+    }
+
+    public void fail(String message, int requestCode) {
+
+       
+    }
+
+    @Override
+    public void loading(boolean loading, int requestCode) {
+      
+    }
+
+     @Override
+    public void sucess(JSONObject jsonObject, int requestCode) {
+
+    }
+
+}
+
+```
+
+
 
 
 
