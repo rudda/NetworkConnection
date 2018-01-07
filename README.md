@@ -208,5 +208,7 @@ public class MainActivity extends AppCompatActivity implements  JSONObjectListen
 ```
 
 
+# acknowledgment
+agradecimento a contribuição direta/indireta de [thiengo calopsita](https://github.com/viniciusthiengo) por meio do canal [Vinicios Thiengo](https://www.youtube.com/channel/UCG3gFuIkRF3PpNkRk3Wp6dw) e do seu  blog https://www.thiengo.com.br/
 
 
