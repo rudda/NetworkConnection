@@ -72,7 +72,19 @@ public class MainActivity extends AppCompatActivity implements JsonArrayListener
     }
 
 ```
+# add headers
 
+you must instantiate a hashmap of type <string, string> add key and respective values. Then just add the hashmap to the setHeader method of an instance of the CustomRequest class. **the example below shows how to add an authorization header.** 
+
+
+```java
+
+ HashMap<String, String> params = new HashMap<>();
+               params.put("Authorization", "Basic " + CustomRequest.generateAutorizationHeader(email, pass));
+               customRequest.setHeaders(params);
+          
+```
+ 
 
 
 
