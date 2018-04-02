@@ -1,6 +1,7 @@
 package com.github.rudda.networkconnection.CustomRequests;
 
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -20,17 +21,25 @@ public class JsonArrayCustomRequest extends Request<JSONArray> {
 
     private Response.Listener<JSONArray> listener;
     private Map<String, String> params;
+    private Map<String,String> headers;
 
-    public JsonArrayCustomRequest(int method, String url, Map<String, String> params,
+    public JsonArrayCustomRequest(int method, String url, Map<String, String> params,Map<String,String> headers,
                                   Response.Listener<JSONArray> reponseListener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.listener = reponseListener;
         this.params = params;
+        this.headers = headers;
     }
 
     protected Map<String, String> getParams()
             throws com.android.volley.AuthFailureError {
         return params;
+    }
+
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+
+        return headers;
     }
 
     @Override

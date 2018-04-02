@@ -1,5 +1,6 @@
 package com.github.rudda.networkconnection.CustomRequests;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -15,14 +16,23 @@ import java.util.Map;
 
 public class StringCustomRequest extends Request<String> {
 
+    private final Map<String, String> headers;
     private Response.Listener<String> listener;
     private Map<String, String> params;
 
-    public StringCustomRequest(int method, String url, Map<String, String> params,
+    public StringCustomRequest(int method, String url, Map<String, String> params, Map<String, String> headers,
                                Response.Listener<String> reponseListener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.listener = reponseListener;
         this.params = params;
+        this.headers = headers;
+    }
+
+
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+
+        return headers;
     }
 
     protected Map<String, String> getParams()

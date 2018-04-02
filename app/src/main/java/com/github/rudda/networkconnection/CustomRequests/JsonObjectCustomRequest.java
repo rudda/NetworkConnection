@@ -26,9 +26,12 @@ public class JsonObjectCustomRequest extends Request<JSONObject> {
     public JsonObjectCustomRequest(int method, String url, Map<String, String> params, Map<String, String> headers,
                                   Response.Listener<JSONObject> reponseListener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
+
         this.listener = reponseListener;
         this.params = params;
         this.headers = headers;
+
+
     }
 
     protected Map<String, String> getParams()
