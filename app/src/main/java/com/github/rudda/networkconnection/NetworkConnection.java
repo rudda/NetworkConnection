@@ -48,7 +48,7 @@ public class NetworkConnection {
         return (instance);
     }
 
-    private static boolean verificaConexao(Context contexto) {
+    public  static boolean verificaConexao(Context contexto) {
         boolean conectado;
         ConnectivityManager conectivtyManager = (ConnectivityManager) contexto.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (conectivtyManager.getActiveNetworkInfo() != null
@@ -81,7 +81,7 @@ public class NetworkConnection {
     public void execute(final JsonArrayListener transaction, final CustomRequest customRequest) {
 
         final JsonArrayCustomRequest request = new JsonArrayCustomRequest(customRequest.getMethod(),
-                customRequest.getBaseUrl() + customRequest.getRouter(),
+                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getHeaders(),
                 customRequest.getParams(),
 
                 new Response.Listener<JSONArray>() {
@@ -166,7 +166,7 @@ public class NetworkConnection {
     public void execute(final StringListener transaction, final CustomRequest customRequest) {
 
         final StringCustomRequest request = new StringCustomRequest(customRequest.getMethod(),
-                customRequest.getBaseUrl() + customRequest.getRouter(),
+                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getHeaders(),
                 customRequest.getParams(),
 
                 new Response.Listener<String>() {
