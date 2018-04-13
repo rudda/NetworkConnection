@@ -81,8 +81,8 @@ public class NetworkConnection {
     public void execute(final JsonArrayListener transaction, final CustomRequest customRequest) {
 
         final JsonArrayCustomRequest request = new JsonArrayCustomRequest(customRequest.getMethod(),
-                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getHeaders(),
-                customRequest.getParams(),
+                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getParams(),
+                customRequest.getHeaders(),
 
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -166,8 +166,8 @@ public class NetworkConnection {
     public void execute(final StringListener transaction, final CustomRequest customRequest) {
 
         final StringCustomRequest request = new StringCustomRequest(customRequest.getMethod(),
-                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getHeaders(),
-                customRequest.getParams(),
+                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getParams(),
+                customRequest.getHeaders(),
 
                 new Response.Listener<String>() {
 

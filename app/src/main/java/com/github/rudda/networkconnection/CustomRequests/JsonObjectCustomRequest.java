@@ -34,8 +34,7 @@ public class JsonObjectCustomRequest extends Request<JSONObject> {
 
     }
 
-    protected Map<String, String> getParams()
-            throws com.android.volley.AuthFailureError {
+    protected Map<String, String> getParams()  throws AuthFailureError {
         return params;
     }
 
