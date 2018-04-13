@@ -195,8 +195,54 @@ public class NetworkConnection {
                     }
                 });
 
+
         request.setTag(customRequest.getTag());
 
+        request.setRetryPolicy(new DefaultRetryPolicy(3 * 1800000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        addRequestQueue(request);
+
+
+    }
+
+    public void execute(final StringListener transaction, final CustomRequest customRequest, String body) {
+
+        final StringCustomRequest request = new StringCustomRequest(customRequest.getMethod(),
+                customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getParams(),
+                customRequest.getHeaders(),
+
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+
+
+                            transaction.sucess(response, customRequest.getResult());
+                        } catch (Exception err) {
+
+                            transaction.fail("erro", customRequest.getResult());
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //transaction.loading(false, customRequest.getResult());
+                        Log.i("log", "onErrorResponse(): " + error.getMessage());
+                        transaction.fail("erro", customRequest.getResult());
+
+                    }
+                });
+
+
+        request.setTag(customRequest.getTag());
+
+        request.setBody(body);
         request.setRetryPolicy(new DefaultRetryPolicy(3 * 1800000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

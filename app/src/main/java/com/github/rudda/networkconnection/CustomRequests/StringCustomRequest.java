@@ -5,6 +5,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 
 import java.io.UnsupportedEncodingException;
@@ -19,6 +20,7 @@ public class StringCustomRequest extends Request<String> {
     private final Map<String, String> headers;
     private Response.Listener<String> listener;
     private Map<String, String> params;
+    private String requestBody;
 
     public StringCustomRequest(int method, String url, Map<String, String> params, Map<String, String> headers,
                                Response.Listener<String> reponseListener, Response.ErrorListener errorListener) {
@@ -38,6 +40,25 @@ public class StringCustomRequest extends Request<String> {
     protected Map<String, String> getParams()
             throws com.android.volley.AuthFailureError {
         return params;
+    }
+
+    public void setBody(String body){
+
+        this.requestBody = body;
+
+    }
+
+    @Override
+    public byte[] getBody() throws AuthFailureError {
+
+        try {
+            return this.requestBody == null ? null : requestBody.getBytes("utf-8");
+        } catch (UnsupportedEncodingException uee) {
+            VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+            return null;
+        }
+
+
     }
 
     @Override
