@@ -25,9 +25,12 @@ public class StringCustomRequest extends Request<String> {
     public StringCustomRequest(int method, String url, Map<String, String> params, Map<String, String> headers,
                                Response.Listener<String> reponseListener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
+
         this.listener = reponseListener;
         this.params = params;
         this.headers = headers;
+
+
     }
 
 
@@ -52,7 +55,9 @@ public class StringCustomRequest extends Request<String> {
     public byte[] getBody() throws AuthFailureError {
 
         try {
+
             return this.requestBody == null ? null : requestBody.getBytes("utf-8");
+
         } catch (UnsupportedEncodingException uee) {
             VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
             return null;
@@ -60,6 +65,8 @@ public class StringCustomRequest extends Request<String> {
 
 
     }
+
+
 
     @Override
     protected Response<String> parseNetworkResponse(NetworkResponse response) {

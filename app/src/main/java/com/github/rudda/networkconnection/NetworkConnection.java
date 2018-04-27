@@ -208,6 +208,7 @@ public class NetworkConnection {
     }
 
     public void execute(final StringListener transaction, final CustomRequest customRequest, String body) {
+        transaction.loading(true, customRequest.getResult());
 
         final StringCustomRequest request = new StringCustomRequest(customRequest.getMethod(),
                 customRequest.getBaseUrl() + customRequest.getRouter(), customRequest.getParams(),
@@ -219,11 +220,11 @@ public class NetworkConnection {
                     public void onResponse(String response) {
 
                         try {
-
-
+                            transaction.loading(true, customRequest.getResult());
                             transaction.sucess(response, customRequest.getResult());
                         } catch (Exception err) {
 
+                            transaction.loading(false, customRequest.getResult());
                             transaction.fail("erro", customRequest.getResult());
 
                         }
@@ -234,7 +235,8 @@ public class NetworkConnection {
                     public void onErrorResponse(VolleyError error) {
                         //transaction.loading(false, customRequest.getResult());
                         Log.i("log", "onErrorResponse(): " + error.getMessage());
-                        transaction.fail("erro", customRequest.getResult());
+                        transaction.fail(error.getMessage(), customRequest.getResult());
+                        transaction.loading(false, customRequest.getResult());
 
                     }
                 });
